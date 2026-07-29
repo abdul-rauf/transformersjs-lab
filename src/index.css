@@ -139,3 +139,66 @@
   bottom: 1rem;
   z-index: 50;
 }
+
+/* Theme-aware code snippet (light + dark) */
+.code-snippet {
+  background: oklch(0.985 0.01 210);
+  color: oklch(0.28 0.02 240);
+}
+
+.code-snippet .tok-kw {
+  color: oklch(0.45 0.16 155);
+  font-weight: 600;
+}
+
+.code-snippet .tok-fn {
+  color: oklch(0.48 0.14 250);
+  font-weight: 500;
+}
+
+.code-snippet .tok-str {
+  color: oklch(0.5 0.18 25);
+}
+
+.code-snippet .tok-cmt {
+  color: oklch(0.55 0.04 240);
+  font-style: italic;
+}
+
+.code-snippet .tok-var {
+  color: oklch(0.4 0.1 200);
+}
+
+.code-snippet .tok-punc {
+  color: oklch(0.45 0.02 240);
+}
+
+.dark .code-snippet {
+  background: oklch(0.22 0.02 240);
+  color: oklch(0.9 0.01 240);
+}
+
+.dark .code-snippet .tok-kw {
+  color: oklch(0.78 0.14 155);
+}
+
+.dark .code-snippet .tok-fn {
+  color: oklch(0.78 0.12 250);
+}
+
+.dark .code-snippet .tok-str {
+  color: oklch(0.78 0.14 25);
+}
+
+.dark .code-snippet .tok-cmt {
+  color: oklch(0.65 0.03 240);
+}
+
+.dark .code-snippet .tok-var {
+  color: oklch(0.78 0.08 200);
+}
+
+.dark .code-snippet .tok-punc {
+  color: oklch(0.7 0.02 240);
+}
+
