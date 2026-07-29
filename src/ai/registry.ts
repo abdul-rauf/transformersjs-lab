@@ -1,0 +1,112 @@
+import type { ModelInfo, TaskId } from '@/types'
+
+export const MODEL_REGISTRY: Record<TaskId, ModelInfo> = {
+  'text-classification': {
+    id: 'text-classification',
+    displayName: 'DistilBERT SST-2',
+    modelId: 'Xenova/distilbert-base-uncased-finetuned-sst-2-english',
+    task: 'text-classification',
+    downloadSizeMB: 67,
+    memoryMB: 120,
+    inputType: 'Text (string)',
+    outputType: 'Label + score',
+    hfUrl:
+      'https://huggingface.co/Xenova/distilbert-base-uncased-finetuned-sst-2-english',
+    description: 'Sentiment analysis (positive / negative) fine-tuned on SST-2.',
+  },
+  embeddings: {
+    id: 'embeddings',
+    displayName: 'MiniLM L6 v2',
+    modelId: 'Xenova/all-MiniLM-L6-v2',
+    task: 'feature-extraction',
+    downloadSizeMB: 23,
+    memoryMB: 80,
+    inputType: 'Text (string)',
+    outputType: 'Dense vector (384-d)',
+    hfUrl: 'https://huggingface.co/Xenova/all-MiniLM-L6-v2',
+    description: 'Sentence embeddings for semantic similarity and retrieval.',
+  },
+  summarization: {
+    id: 'summarization',
+    displayName: 'DistilBART CNN',
+    modelId: 'Xenova/distilbart-cnn-6-6',
+    task: 'summarization',
+    downloadSizeMB: 306,
+    memoryMB: 450,
+    inputType: 'Long text',
+    outputType: 'Summary text',
+    hfUrl: 'https://huggingface.co/Xenova/distilbart-cnn-6-6',
+    description: 'Abstractive summarization distilled from BART CNN.',
+  },
+  'question-answering': {
+    id: 'question-answering',
+    displayName: 'DistilBERT SQuAD',
+    modelId: 'Xenova/distilbert-base-cased-distilled-squad',
+    task: 'question-answering',
+    downloadSizeMB: 65,
+    memoryMB: 130,
+    inputType: 'Context + question',
+    outputType: 'Answer span + score',
+    hfUrl: 'https://huggingface.co/Xenova/distilbert-base-cased-distilled-squad',
+    description: 'Extractive QA — finds answer spans inside a provided context.',
+  },
+  translation: {
+    id: 'translation',
+    displayName: 'OPUS-MT EN→FR',
+    modelId: 'Xenova/opus-mt-en-fr',
+    task: 'translation',
+    downloadSizeMB: 301,
+    memoryMB: 400,
+    inputType: 'English text',
+    outputType: 'French text',
+    hfUrl: 'https://huggingface.co/Xenova/opus-mt-en-fr',
+    description:
+      'Neural machine translation from English to French. Uses fp32 to avoid ORT MatMulNBits q8 bugs.',
+    preferredDtype: 'fp32',
+  },
+  'text-generation': {
+    id: 'text-generation',
+    displayName: 'Qwen2.5 0.5B Instruct',
+    modelId: 'onnx-community/Qwen2.5-0.5B-Instruct',
+    task: 'text-generation',
+    downloadSizeMB: 290,
+    memoryMB: 400,
+    inputType: 'Prompt text',
+    outputType: 'Generated text',
+    hfUrl: 'https://huggingface.co/onnx-community/Qwen2.5-0.5B-Instruct',
+    description: 'Small instruction-tuned Qwen 0.5B for short local text generation in the browser.',
+    preferredDtype: 'q4',
+  },
+  'image-classification': {
+    id: 'image-classification',
+    displayName: 'ViT Base 224',
+    modelId: 'Xenova/vit-base-patch16-224',
+    task: 'image-classification',
+    downloadSizeMB: 87,
+    memoryMB: 180,
+    inputType: 'Image (URL / File)',
+    outputType: 'Top-k labels + scores',
+    hfUrl: 'https://huggingface.co/Xenova/vit-base-patch16-224',
+    description: 'Vision Transformer classifying ImageNet categories.',
+  },
+  'speech-recognition': {
+    id: 'speech-recognition',
+    displayName: 'Whisper Tiny EN',
+    modelId: 'Xenova/whisper-tiny.en',
+    task: 'automatic-speech-recognition',
+    downloadSizeMB: 41,
+    memoryMB: 100,
+    inputType: 'Audio (wav / mp3)',
+    outputType: 'Transcript text',
+    hfUrl: 'https://huggingface.co/Xenova/whisper-tiny.en',
+    description: 'English-only Whisper tiny for on-device transcription.',
+    // q8 Whisper can hit the same ORT MatMulNBits missing-scale bug on v4.2
+    preferredDtype: 'fp32',
+  },
+}
+
+export function getModel(id: TaskId): ModelInfo {
+  return MODEL_REGISTRY[id]
+}
+
+export const ALL_MODELS = Object.values(MODEL_REGISTRY)
