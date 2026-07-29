@@ -41,7 +41,7 @@ export const PAGE_EXPLAINS: Record<string, string> = {
   '/image-classification':
     'Vision Transformers label uploaded images on-device — useful for asset tagging and lightweight visual triage.',
   '/speech-recognition':
-    'Whisper Tiny transcribes English audio locally — useful for meeting notes and voice capture without uploading audio.',
+    'Whisper Tiny transcribes English audio locally from an upload or live mic recording — useful for meeting notes and voice capture without uploading audio.',
   '/performance':
     'Compare download size, cold vs warm load, and inference latency across tasks. Prefer WebGPU when available.',
   '/browser-storage':

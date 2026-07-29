@@ -183,6 +183,6 @@ export const CAPABILITY_CONTENT: Record<string, CapabilityContent> = {
       'Real-time streaming is more complex than batch upload.',
     ],
     explainSummary:
-      'Upload English audio; Whisper Tiny produces a local transcript.',
+      'Upload or record English audio; Whisper Tiny produces a local transcript.',
   },
 }
