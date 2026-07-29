@@ -18,6 +18,31 @@ npm run build    # production build
 npm run preview  # preview production build
 ```
 
+## Deploy to Vercel
+
+This app is a static Vite SPA (no server). Deployment config lives in [`vercel.json`](vercel.json) (SPA rewrites + COOP/COEP headers).
+
+### Dashboard
+
+1. Push this repo to GitHub.
+2. In [Vercel](https://vercel.com) → **Add New Project** → import the repo.
+3. Confirm settings (usually auto-detected from `vercel.json` / Vite):
+   - **Framework:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+4. Click **Deploy**.
+
+### CLI
+
+```bash
+npm i -g vercel
+vercel login
+vercel          # preview deployment
+vercel --prod   # production
+```
+
+After deploy, verify deep links (e.g. `/embeddings`) still work on refresh, then run one demo (Pre-warm → Run). Models download from Hugging Face in the browser at runtime.
+
 ## Architecture
 
 ```
